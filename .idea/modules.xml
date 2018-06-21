@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://E:\ggfw\2018-6-21\Ieptproject\coreApp\Core.iml" filepath="E:\ggfw\2018-6-21\Ieptproject\coreApp\Core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ieptproject.iml" filepath="$PROJECT_DIR$/Ieptproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/coreApp/coreApp.iml" filepath="$PROJECT_DIR$/coreApp/coreApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/huadApp/huadapp.iml" filepath="$PROJECT_DIR$/huadApp/huadapp.iml" />
+      <module fileurl="file://E:\ggfw\2018-6-21\Ieptproject\shengtApp\qhdApp.iml" filepath="E:\ggfw\2018-6-21\Ieptproject\shengtApp\qhdApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shengtApp/shengtApp.iml" filepath="$PROJECT_DIR$/shengtApp/shengtApp.iml" />
+    </modules>
+  </component>
+</project>
