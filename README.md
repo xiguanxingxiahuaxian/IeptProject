@@ -11,4 +11,4 @@
   必须要使用 双引号
     
 2  新创建项目可以 作为组件导入，修改build.gradle 与coreApp核心一样就行。 
-   简单去比较一下 huadapp，shengtapp  model
+   简单去比较一下 huadapp，shengtapp  model# IeptProject
