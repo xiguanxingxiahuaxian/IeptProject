@@ -1,1 +1,1 @@
-include ':shengtApp', ':coreApp', ':huadApp', ':coreAppLibrary'
+include ':shengtApp', ':coreApp', ':huadApp'
