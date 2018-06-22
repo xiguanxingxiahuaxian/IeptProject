@@ -1,9 +1,8 @@
-package com.neuqsoft.yldyzgrz;
+package com.neuqsoft.yldyzgrz.huad;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.neuqsoft.yldyzgrz.huadapp.R;
 
 public class HudActivity extends AppCompatActivity {
 
