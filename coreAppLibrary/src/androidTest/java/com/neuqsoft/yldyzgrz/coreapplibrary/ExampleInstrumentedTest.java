@@ -1,4 +1,4 @@
-package com.neuqsoft.yldyzgrz.huadapp;
+package com.neuqsoft.yldyzgrz.coreapplibrary;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.neuqsoft.yldyzgrz.huadapp", appContext.getPackageName());
+        assertEquals("com.neuqsoft.yldyzgrz.coreapplibrary.test", appContext.getPackageName());
     }
 }

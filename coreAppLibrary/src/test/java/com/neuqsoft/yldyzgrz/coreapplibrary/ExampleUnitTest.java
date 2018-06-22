@@ -1,4 +1,4 @@
-package com.neuqsoft.yldyzgrz.huadapp;
+package com.neuqsoft.yldyzgrz.coreapplibrary;
 
 import org.junit.Test;
 

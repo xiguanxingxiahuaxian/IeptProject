@@ -25,5 +25,4 @@ dependencies {
     })
     implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
     testImplementation 'junit:junit:4.12'
-    implementation project(':coreApp')
 }
