@@ -27,6 +27,5 @@ public abstract class MvpFragment<P extends BasePresenter> extends BaseFragment 
     public void onDestroy() {
         super.onDestroy();
         presener.detattch();
-        SubscriptionManager.getInstance().cancelall();
     }
 }

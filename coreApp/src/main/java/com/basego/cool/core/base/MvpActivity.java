@@ -27,6 +27,5 @@ public abstract class MvpActivity <P extends BasePresenter> extends BaseActivity
     protected void onDestroy() {
         super.onDestroy();
         presener.detattch();
-        SubscriptionManager.getInstance().cancelall();
     }
 }

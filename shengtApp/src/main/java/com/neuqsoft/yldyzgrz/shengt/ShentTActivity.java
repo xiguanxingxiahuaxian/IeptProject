@@ -8,6 +8,8 @@ import com.basego.cool.core.base.MvpActivity;
 import com.neuqsoft.yldyzgrz.shengt.Presenter.CommonPresenter;
 import com.neuqsoft.yldyzgrz.shengt.view.CommonView;
 
+import rx.Subscription;
+
 
 public class ShentTActivity extends MvpActivity<CommonPresenter> implements CommonView {
 
@@ -43,6 +45,11 @@ public class ShentTActivity extends MvpActivity<CommonPresenter> implements Comm
 
     @Override
     public void onFail() {
+
+    }
+
+    @Override
+    public void onCancel(Subscription subscription) {
 
     }
 

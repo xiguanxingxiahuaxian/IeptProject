@@ -3,15 +3,12 @@ package com.basego.cool.core.base;
 import rx.Subscription;
 
 /**
- * 项目名称：Basego
+ * 项目名称：IeptProject
  * 类描述：
  * 创建人：maw@neuqsoft.com
- * 创建时间： 2017/9/6 11:46
+ * 创建时间： 2018/7/23 15:53
  * 修改备注
  */
-public interface BaseView {
-    void  onShow();
-    void  onfinish();
-    void  onFail();
+public interface IBaseSubscribe {
     void  onCancel(Subscription subscription);
 }
