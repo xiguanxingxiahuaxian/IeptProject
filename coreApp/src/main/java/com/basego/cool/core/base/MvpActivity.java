@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import com.basego.cool.core.api.SubscriptionManager;
 
+import rx.Subscription;
+
 /**
  * 项目名称：Basego
  * 类描述：
@@ -13,6 +15,7 @@ import com.basego.cool.core.api.SubscriptionManager;
  */
 public abstract class MvpActivity <P extends BasePresenter> extends BaseActivity implements BaseView{
     public  P presener;
+    private Subscription subscription;
 
     @Override
     public void initBefore(Bundle savedInstanceState) {
@@ -21,11 +24,19 @@ public abstract class MvpActivity <P extends BasePresenter> extends BaseActivity
         presener.addView(this);
     }
 
+    @Override
+    public void onCancel(Subscription subscription) {
+        this.subscription=subscription;
+    }
+
     protected abstract P initPresener();
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if(subscription!=null&&!subscription.isUnsubscribed()){
+            subscription.unsubscribe();
+        }
         presener.detattch();
     }
 }
