@@ -1,5 +1,6 @@
 package com.basego.cool.core.api;
 
+import android.app.Application;
 import android.util.Log;
 
 import com.basego.cool.core.base.BaseApp;
@@ -41,6 +42,7 @@ public class RetrofitBuilder {
         private String baseUrl;
         private Retrofit retrofit;
         private RetrofitBuilder retrofitBuilder;
+        private Application application=null;
 
         public NewBuilder(){};
         // get baseurl
@@ -57,7 +59,14 @@ public class RetrofitBuilder {
                     .build();
             return this;
         }
-
+        public NewBuilder initRetrofit(Application application) {
+            retrofit = new Retrofit.Builder().baseUrl(baseUrl).client(defaultHttpClient())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson()))
+                    .build();
+            this.application=application;
+            return this;
+        }
         //apply build
         public RetrofitBuilder Build() {
             if (retrofitBuilder == null) {
@@ -89,7 +98,12 @@ public class RetrofitBuilder {
 
         // method of cache
         public Cache cache() {
-            File file = BaseApp.getInstance().getExternalFilesDir(AppConfig.CATCHE_DIRECTORY);
+            File file=null;
+            if(application==null) {
+                 file = BaseApp.getInstance().getExternalFilesDir(AppConfig.CATCHE_DIRECTORY);
+            }else {
+                 file = application.getExternalFilesDir(AppConfig.CATCHE_DIRECTORY);
+            }
             return new Cache(file, AppConfig.CATCHE_SIZE);
         }
     }
