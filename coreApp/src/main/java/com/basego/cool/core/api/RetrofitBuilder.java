@@ -42,9 +42,13 @@ public class RetrofitBuilder {
         private String baseUrl;
         private Retrofit retrofit;
         private RetrofitBuilder retrofitBuilder;
-        private Application application=null;
 
-        public NewBuilder(){};
+
+        public NewBuilder() {
+        }
+
+        ;
+
         // get baseurl
         public NewBuilder baseUrl(String baseUrl) {
             this.baseUrl = baseUrl;
@@ -53,20 +57,21 @@ public class RetrofitBuilder {
 
         // init retrofit
         public NewBuilder initRetrofit() {
-            retrofit = new Retrofit.Builder().baseUrl(baseUrl).client(defaultHttpClient())
+            retrofit = new Retrofit.Builder().baseUrl(baseUrl).client(defaultHttpClient(null))
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(gson()))
                     .build();
             return this;
         }
+
         public NewBuilder initRetrofit(Application application) {
-            retrofit = new Retrofit.Builder().baseUrl(baseUrl).client(defaultHttpClient())
+            retrofit = new Retrofit.Builder().baseUrl(baseUrl).client(defaultHttpClient(application))
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(gson()))
                     .build();
-            this.application=application;
             return this;
         }
+
         //apply build
         public RetrofitBuilder Build() {
             if (retrofitBuilder == null) {
@@ -82,7 +87,7 @@ public class RetrofitBuilder {
         }
 
         //okhttp add net interceptor and set new client
-        private OkHttpClient defaultHttpClient() {
+        private OkHttpClient defaultHttpClient(Application application) {
             // in develope, you can print log
             HttpLoggingInterceptor.Level level = HttpLoggingInterceptor.Level.BODY;
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
@@ -92,18 +97,23 @@ public class RetrofitBuilder {
                 }
             });
             loggingInterceptor.setLevel(level);
-            return new OkHttpClient.Builder().cache(cache()).addNetworkInterceptor(new CatcheInterceptor()).addInterceptor(loggingInterceptor)
-                    .build();
+            if (application == null) {
+                return new OkHttpClient.Builder().cache(cache()).addNetworkInterceptor(new CatcheInterceptor()).addInterceptor(loggingInterceptor)
+                        .build();
+            } else {
+                return new OkHttpClient.Builder().cache(cache(application)).addNetworkInterceptor(new CatcheInterceptor()).addInterceptor(loggingInterceptor)
+                        .build();
+            }
         }
 
         // method of cache
+        public Cache cache(Application application) {
+            File file = application.getExternalFilesDir(AppConfig.CATCHE_DIRECTORY);
+            return new Cache(file, AppConfig.CATCHE_SIZE);
+        }
+
         public Cache cache() {
-            File file=null;
-            if(application==null) {
-                 file = BaseApp.getInstance().getExternalFilesDir(AppConfig.CATCHE_DIRECTORY);
-            }else {
-                 file = application.getExternalFilesDir(AppConfig.CATCHE_DIRECTORY);
-            }
+            File file = BaseApp.getInstance().getExternalFilesDir(AppConfig.CATCHE_DIRECTORY);
             return new Cache(file, AppConfig.CATCHE_SIZE);
         }
     }
