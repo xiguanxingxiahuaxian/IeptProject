@@ -101,7 +101,7 @@ public class RetrofitBuilder {
                 return new OkHttpClient.Builder().cache(cache()).addNetworkInterceptor(new CatcheInterceptor()).addInterceptor(loggingInterceptor)
                         .build();
             } else {
-                return new OkHttpClient.Builder().cache(cache(application)).addNetworkInterceptor(new CatcheInterceptor()).addInterceptor(loggingInterceptor)
+                return new OkHttpClient.Builder().addNetworkInterceptor(new CatcheInterceptor()).addInterceptor(loggingInterceptor)
                         .build();
             }
         }
